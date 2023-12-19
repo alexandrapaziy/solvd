@@ -1,4 +1,4 @@
-USE `bank` ;
+USE `bank`;
 
 CREATE TABLE IF NOT EXISTS `bank`.`customers` (
     `customer_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `bank`.`bank_branches` (
     `bank_id` BIGINT NOT NULL,
     `location` VARCHAR(45) NOT NULL,
     `phone` VARCHAR(13) NOT NULL,
-    PRIMARY KEY (`bank_branch_id`, `bank_id`),
+    PRIMARY KEY (`bank_branch_id`),
     FOREIGN KEY (`bank_id`)
     REFERENCES `bank`.`banks` (`bank_id`));
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `bank`.`accounts` (
     `account_type_id` INT NOT NULL,
     `bank_branch_id` INT NOT NULL,
     `balance` DOUBLE NULL,
-    PRIMARY KEY (`account_id`, `customer_id`, `account_type_id`, `bank_branch_id`),
+    PRIMARY KEY (`account_id`),
     FOREIGN KEY (`customer_id`)
     REFERENCES `bank`.`customers` (`customer_id`),
     FOREIGN KEY (`account_type_id`)
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `bank`.`transactions` (
     `transaction_type_id` INT NOT NULL,
     `amount` DOUBLE NOT NULL,
     `date` DATETIME NOT NULL,
-    PRIMARY KEY (`transaction_id`, `account_id`, `transaction_type_id`),
+    PRIMARY KEY (`transaction_id`),
     FOREIGN KEY (`account_id`)
     REFERENCES `bank`.`accounts` (`account_id`),
     FOREIGN KEY (`transaction_type_id`)
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `bank`.`bank_operations` (
     `bank_operation_type_id` INT NOT NULL,
     `account_id` BIGINT NOT NULL,
     `date` DATETIME NOT NULL,
-    PRIMARY KEY (`bank_operation_id`, `bank_operation_type_id`, `account_id`),
+    PRIMARY KEY (`bank_operation_id`),
     FOREIGN KEY (`bank_operation_type_id`)
     REFERENCES `bank`.`bank_operation_types` (`bank_operation_type_id`),
     FOREIGN KEY (`account_id`)
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `bank`.`employees` (
     `patronymic` VARCHAR(45) NOT NULL,
     `phone` VARCHAR(13) NOT NULL,
     `email` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`employee_id`, `bank_branch_id`, `position_id`),
+    PRIMARY KEY (`employee_id`),
     FOREIGN KEY (`bank_branch_id`)
     REFERENCES `bank`.`bank_branches` (`bank_branch_id`),
     FOREIGN KEY (`position_id`)
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `bank`.`credit_applications` (
     `customer_id` BIGINT UNSIGNED NOT NULL,
     `credit_application_status_id` INT NOT NULL,
     `date` DATE NOT NULL,
-    PRIMARY KEY (`application_id`, `customer_id`, `credit_application_status_id`),
+    PRIMARY KEY (`application_id`),
     FOREIGN KEY (`customer_id`)
     REFERENCES `bank`.`customers` (`customer_id`),
     FOREIGN KEY (`credit_application_status_id`)
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `bank`.`credit_agreements` (
     `amount` DOUBLE NOT NULL,
     `interest` INT NOT NULL,
     `one_time_payment` DOUBLE NOT NULL,
-    PRIMARY KEY (`agreement_id`, `application_id`, `credit_agreement_status_id`),
+    PRIMARY KEY (`agreement_id`),
     FOREIGN KEY (`application_id`)
     REFERENCES `bank`.`credit_applications` (`application_id`),
     FOREIGN KEY (`credit_agreement_status_id`)
@@ -137,14 +137,14 @@ CREATE TABLE IF NOT EXISTS `bank`.`credit_histories` (
     `agreement_id` BIGINT NOT NULL,
     `amount` DOUBLE NOT NULL,
     `date` DATETIME NOT NULL,
-    PRIMARY KEY (`payment_id`, `agreement_id`),
+    PRIMARY KEY (`payment_id`),
     FOREIGN KEY (`agreement_id`)
     REFERENCES `bank`.`credit_agreements` (`agreement_id`));
 
 CREATE TABLE IF NOT EXISTS `bank`.`employees_has_bank_operations` (
     `employee_id` INT UNSIGNED NOT NULL,
     `bank_operation_id` INT NOT NULL,
-    PRIMARY KEY (`employee_id`, `bank_operation_id`),
+    PRIMARY KEY (`employee_id`),
     FOREIGN KEY (`employee_id`)
     REFERENCES `bank`.`employees` (`employee_id`),
     FOREIGN KEY (`bank_operation_id`)
