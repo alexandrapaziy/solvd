@@ -1,22 +1,22 @@
 package com.solvd.bank.domain;
 
 public class Bank {
-    private long bankId;
+    private Long bankId;
     private String bankName;
-    private String BankLocation;
-    private String BankPhone;
+    private String bankLocation;
+    private String bankPhone;
 
     public Bank(String bankName, String bankLocation, String bankPhone) {
         this.bankName = bankName;
-        BankLocation = bankLocation;
-        BankPhone = bankPhone;
+        this.bankLocation = bankLocation;
+        this.bankPhone = bankPhone;
     }
 
-    public long getBankId() {
+    public Long getBankId() {
         return bankId;
     }
 
-    public void setBankId(long bankId) {
+    public void setBankId(Long bankId) {
         this.bankId = bankId;
     }
 
@@ -29,18 +29,18 @@ public class Bank {
     }
 
     public String getBankLocation() {
-        return BankLocation;
+        return bankLocation;
     }
 
     public void setBankLocation(String bankLocation) {
-        BankLocation = bankLocation;
+        bankLocation = bankLocation;
     }
 
     public String getBankPhone() {
-        return BankPhone;
+        return bankPhone;
     }
 
     public void setBankPhone(String bankPhone) {
-        BankPhone = bankPhone;
+        bankPhone = bankPhone;
     }
 }

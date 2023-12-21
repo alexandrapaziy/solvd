@@ -1,7 +1,7 @@
 package com.solvd.bank.domain;
 
 public class Customer {
-    private long customerId;
+    private Long customerId;
     private String customerName;
     private String customerSurname;
     private String customerPatronymic;
@@ -18,11 +18,11 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
-    public long getCustomerId() {
+    public Long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(long customerId) {
+    public void setCustomerId(Long customerId) {
         this.customerId = customerId;
     }
 
