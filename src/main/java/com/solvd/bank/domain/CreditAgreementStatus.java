@@ -1,26 +1,26 @@
 package com.solvd.bank.domain;
 
 public class CreditAgreementStatus {
-    private int creditAgreementStatusId;
-    private String creditAgreementName;
+    private Integer creditAgreementStatusId;
+    private String creditAgreementStatusName;
 
-    public CreditAgreementStatus(String creditAgreementName) {
-        this.creditAgreementName = creditAgreementName;
+    public CreditAgreementStatus(String creditAgreementStatusName) {
+        this.creditAgreementStatusName = creditAgreementStatusName;
     }
 
-    public int getCreditAgreementStatusId() {
+    public Integer getCreditAgreementStatusId() {
         return creditAgreementStatusId;
     }
 
-    public void setCreditAgreementStatusId(int creditAgreementStatusId) {
+    public void setCreditAgreementStatusId(Integer creditAgreementStatusId) {
         this.creditAgreementStatusId = creditAgreementStatusId;
     }
 
-    public String getCreditAgreementName() {
-        return creditAgreementName;
+    public String getCreditAgreementStatusName() {
+        return creditAgreementStatusName;
     }
 
-    public void setCreditAgreementName(String creditAgreementName) {
-        this.creditAgreementName = creditAgreementName;
+    public void setCreditAgreementStatusName(String creditAgreementStatusName) {
+        this.creditAgreementStatusName = creditAgreementStatusName;
     }
 }

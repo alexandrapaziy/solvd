@@ -1,6 +1,6 @@
 package com.solvd.bank.persistence.config;
 
-import com.solvd.bank.exception.CreateConnectionException;
+import com.solvd.bank.domain.exception.CreateConnectionException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

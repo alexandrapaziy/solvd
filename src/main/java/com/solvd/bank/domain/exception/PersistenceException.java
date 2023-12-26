@@ -1,4 +1,4 @@
-package com.solvd.bank.exception;
+package com.solvd.bank.domain.exception;
 
 import java.sql.SQLException;
 

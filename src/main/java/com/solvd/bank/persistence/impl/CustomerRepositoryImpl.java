@@ -1,7 +1,7 @@
 package com.solvd.bank.persistence.impl;
 
 import com.solvd.bank.domain.Customer;
-import com.solvd.bank.exception.PersistenceException;
+import com.solvd.bank.domain.exception.PersistenceException;
 import com.solvd.bank.persistence.CustomerRepository;
 import com.solvd.bank.persistence.config.ConnectionPool;
 
@@ -17,6 +17,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     private static final String DELETE = "DELETE FROM bank.customers WHERE customer_id = ?;";
     private static final String FIND = "SELECT * FROM bank.customers WHERE customer_id = ?;";
     private static final String FIND_ALL = "SELECT * FROM bank.customers;";
+
     @Override
     public void create(Customer customer) {
         Connection connection = CONNECTION_POOL.getConnection();
@@ -95,6 +96,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 String customerAddress = resultSet.getString("address");
 
                 customer = new Customer(customerName, customerSurname, customerPatronymic, customerPhone, customerEmail, customerAddress);
+                customer.setCustomerId(customerId);
             }
         } catch (SQLException e) {
             throw new PersistenceException("Unable to find the customer by id", e);
@@ -114,6 +116,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
+                Long customerId = resultSet.getLong("customer_id");
                 String customerName = resultSet.getString("name");
                 String customerSurname = resultSet.getString("surname");
                 String customerPatronymic = resultSet.getString("patronymic");
@@ -122,6 +125,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 String customerAddress = resultSet.getString("address");
 
                 Customer customer = new Customer(customerName, customerSurname, customerPatronymic, customerPhone, customerEmail, customerAddress);
+                customer.setCustomerId(customerId);
                 customers.add(customer);
             }
         } catch (SQLException e) {

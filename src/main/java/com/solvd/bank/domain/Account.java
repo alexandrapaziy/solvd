@@ -1,7 +1,7 @@
 package com.solvd.bank.domain;
 
 public class Account {
-    private long accountId;
+    private Long accountId;
     private Customer customer;
     private AccountType accountType;
     private BankBranch bankBranch;
@@ -14,11 +14,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public long getAccountId() {
+    public Long getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(long accountId) {
+    public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 

@@ -3,7 +3,7 @@ package com.solvd.bank.domain;
 import java.time.LocalDate;
 
 public class CreditApplication {
-    private long creditApplicationId;
+    private Long creditApplicationId;
     private Customer customer;
     private CreditApplicationStatus creditApplicationStatus;
     private LocalDate date;
@@ -14,11 +14,11 @@ public class CreditApplication {
         this.date = date;
     }
 
-    public long getCreditApplicationId() {
+    public Long getCreditApplicationId() {
         return creditApplicationId;
     }
 
-    public void setCreditApplicationId(long creditApplicationId) {
+    public void setCreditApplicationId(Long creditApplicationId) {
         this.creditApplicationId = creditApplicationId;
     }
 

@@ -1,18 +1,18 @@
 package com.solvd.bank.domain;
 
 public class BankOperationType {
-    private int bankOperationTypeId;
+    private Integer bankOperationTypeId;
     private String bankOperationTypeName;
 
     public BankOperationType(String bankOperationTypeName) {
         this.bankOperationTypeName = bankOperationTypeName;
     }
 
-    public int getBankOperationTypeId() {
+    public Integer getBankOperationTypeId() {
         return bankOperationTypeId;
     }
 
-    public void setBankOperationTypeId(int bankOperationTypeId) {
+    public void setBankOperationTypeId(Integer bankOperationTypeId) {
         this.bankOperationTypeId = bankOperationTypeId;
     }
 

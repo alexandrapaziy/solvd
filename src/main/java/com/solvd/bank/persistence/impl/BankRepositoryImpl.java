@@ -1,7 +1,7 @@
 package com.solvd.bank.persistence.impl;
 
 import com.solvd.bank.domain.Bank;
-import com.solvd.bank.exception.PersistenceException;
+import com.solvd.bank.domain.exception.PersistenceException;
 import com.solvd.bank.persistence.BankRepository;
 import com.solvd.bank.persistence.config.ConnectionPool;
 
@@ -87,6 +87,7 @@ public class BankRepositoryImpl implements BankRepository {
                 String bankPhone = resultSet.getString("main_phone");
 
                 bank = new Bank(bankName, bankLocation, bankPhone);
+                bank.setBankId(bankId);
             }
         } catch (SQLException e) {
             throw new PersistenceException("Unable to find the bank by id", e);
@@ -106,11 +107,13 @@ public class BankRepositoryImpl implements BankRepository {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
+                Long bankId = resultSet.getLong("bank_id");
                 String bankName = resultSet.getString("bank_name");
                 String bankLocation = resultSet.getString("main_location");
                 String bankPhone = resultSet.getString("main_phone");
 
                 Bank bank = new Bank(bankName, bankLocation, bankPhone);
+                bank.setBankId(bankId);
                 banks.add(bank);
             }
         } catch (SQLException e) {

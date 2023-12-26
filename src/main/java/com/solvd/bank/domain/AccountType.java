@@ -1,18 +1,18 @@
 package com.solvd.bank.domain;
 
 public class AccountType {
-    private int accountTypeId;
+    private Integer accountTypeId;
     private String accountTypeName;
 
     public AccountType(String accountTypeName) {
         this.accountTypeName = accountTypeName;
     }
 
-    public int getAccountTypeId() {
+    public Integer getAccountTypeId() {
         return accountTypeId;
     }
 
-    public void setAccountTypeId(int accountTypeId) {
+    public void setAccountTypeId(Integer accountTypeId) {
         this.accountTypeId = accountTypeId;
     }
 

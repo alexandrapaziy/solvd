@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `bank`.`bank_operation_types` (
     PRIMARY KEY (`bank_operation_type_id`));
 
 CREATE TABLE IF NOT EXISTS `bank`.`bank_operations` (
-    `bank_operation_id` INT NOT NULL,
+    `bank_operation_id` INT NOT NULL AUTO_INCREMENT,
     `bank_operation_type_id` INT NOT NULL,
     `account_id` BIGINT NOT NULL,
     `date` DATETIME NOT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `bank`.`employees` (
 
 CREATE TABLE IF NOT EXISTS `bank`.`credit_application_statuses` (
     `credit_application_status_id` INT NOT NULL AUTO_INCREMENT,
-    `credit_application_status_name_` VARCHAR(45) NOT NULL,
+    `credit_application_status_name` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`credit_application_status_id`));
 
 CREATE TABLE IF NOT EXISTS `bank`.`credit_applications` (
@@ -144,7 +144,6 @@ CREATE TABLE IF NOT EXISTS `bank`.`credit_histories` (
 CREATE TABLE IF NOT EXISTS `bank`.`employees_has_bank_operations` (
     `employee_id` INT UNSIGNED NOT NULL,
     `bank_operation_id` INT NOT NULL,
-    PRIMARY KEY (`employee_id`),
     FOREIGN KEY (`employee_id`)
     REFERENCES `bank`.`employees` (`employee_id`),
     FOREIGN KEY (`bank_operation_id`)

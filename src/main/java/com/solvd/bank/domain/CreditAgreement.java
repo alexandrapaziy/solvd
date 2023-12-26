@@ -1,7 +1,7 @@
 package com.solvd.bank.domain;
 
 public class CreditAgreement {
-    private long creditAgreementId;
+    private Long creditAgreementId;
     private CreditApplication creditApplication;
     private CreditAgreementStatus creditAgreementStatus;
     private double amount;
@@ -16,11 +16,11 @@ public class CreditAgreement {
         this.oneTimePayment = oneTimePayment;
     }
 
-    public long getCreditAgreementId() {
+    public Long getCreditAgreementId() {
         return creditAgreementId;
     }
 
-    public void setCreditAgreementId(long creditAgreementId) {
+    public void setCreditAgreementId(Long creditAgreementId) {
         this.creditAgreementId = creditAgreementId;
     }
 
