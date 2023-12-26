@@ -1,7 +1,7 @@
 package com.solvd.bank.domain;
 
 public class BankBranch {
-    private int bankBranchId;
+    private Integer bankBranchId;
     private Bank bank;
     private String bankBranchLocation;
     private String bankBranchPhone;
@@ -12,11 +12,11 @@ public class BankBranch {
         this.bankBranchPhone = bankBranchPhone;
     }
 
-    public int getBankBranchId() {
+    public Integer getBankBranchId() {
         return bankBranchId;
     }
 
-    public void setBankBranchId(int bankBranchId) {
+    public void setBankBranchId(Integer bankBranchId) {
         this.bankBranchId = bankBranchId;
     }
 

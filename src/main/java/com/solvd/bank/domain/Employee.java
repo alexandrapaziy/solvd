@@ -1,7 +1,7 @@
 package com.solvd.bank.domain;
 
 public class Employee {
-    private long employeeId;
+    private Integer employeeId;
     private BankBranch bankBranch;
     private Position position;
     private String employeeName;
@@ -20,11 +20,11 @@ public class Employee {
         this.employeeEmail = employeeEmail;
     }
 
-    public long getEmployeeId() {
+    public Integer getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(long employeeId) {
+    public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
     }
 

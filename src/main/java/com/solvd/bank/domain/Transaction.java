@@ -3,7 +3,7 @@ package com.solvd.bank.domain;
 import java.time.LocalDateTime;
 
 public class Transaction {
-    private long transactionId;
+    private Long transactionId;
     private Account account;
     private TransactionType transactionType;
     private double amount;
@@ -16,11 +16,11 @@ public class Transaction {
         this.date = date;
     }
 
-    public long getTransactionId() {
+    public Long getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(long transactionId) {
+    public void setTransactionId(Long transactionId) {
         this.transactionId = transactionId;
     }
 

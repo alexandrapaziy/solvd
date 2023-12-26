@@ -3,7 +3,7 @@ package com.solvd.bank.domain;
 import java.time.LocalDateTime;
 
 public class CreditHistory {
-    private long paymentId;
+    private Long paymentId;
     private CreditAgreement creditAgreement;
     private double amount;
     private LocalDateTime date;
@@ -14,11 +14,11 @@ public class CreditHistory {
         this.date = date;
     }
 
-    public long getPaymentId() {
+    public Long getPaymentId() {
         return paymentId;
     }
 
-    public void setPaymentId(long paymentId) {
+    public void setPaymentId(Long paymentId) {
         this.paymentId = paymentId;
     }
 

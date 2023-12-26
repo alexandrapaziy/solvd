@@ -74,7 +74,7 @@ VALUES
     (4, 'credit closing');
 
 INSERT INTO `bank`.`credit_application_statuses`
-(`credit_application_status_id`, `credit_application_status_name_`)
+(`credit_application_status_id`, `credit_application_status_name`)
 VALUES
     (1, 'in review'),
     (2, 'approved'),

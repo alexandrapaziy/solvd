@@ -3,7 +3,7 @@ package com.solvd.bank.domain;
 import java.time.LocalDateTime;
 
 public class BankOperation {
-    private int bankOperationId;
+    private Integer bankOperationId;
     private BankOperationType bankOperationType;
     private Account account;
     private Employee employee;
@@ -16,11 +16,11 @@ public class BankOperation {
         this.date = date;
     }
 
-    public int getBankOperationId() {
+    public Integer getBankOperationId() {
         return bankOperationId;
     }
 
-    public void setBankOperationId(int bankOperationId) {
+    public void setBankOperationId(Integer bankOperationId) {
         this.bankOperationId = bankOperationId;
     }
 

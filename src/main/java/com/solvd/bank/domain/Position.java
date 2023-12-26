@@ -1,18 +1,18 @@
 package com.solvd.bank.domain;
 
 public class Position {
-    private int positionId;
+    private Integer positionId;
     private String positionName;
 
     public Position(String positionName) {
         this.positionName = positionName;
     }
 
-    public int getPositionId() {
+    public Integer getPositionId() {
         return positionId;
     }
 
-    public void setPositionId(int positionId) {
+    public void setPositionId(Integer positionId) {
         this.positionId = positionId;
     }
 
