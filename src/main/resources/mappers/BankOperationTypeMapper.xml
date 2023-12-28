@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.BankOperationTypeRepository">
+
+    <insert id="create" keyColumn="bank_operation_type_id" keyProperty="bankOperationTypeId" useGeneratedKeys="true">
+        INSERT INTO bank_operation_types (bank_operation_type_name) VALUES (#{bankOperationTypeName})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM bank_operation_types WHERE bank_operation_type_id = #{bankOperationTypeId}
+    </delete>
+
+    <select id="findById" resultMap="bankOperationTypeResultMap">
+        SELECT * FROM bank_operation_types WHERE bank_operation_type_id = #{bankOperationTypeId}
+    </select>
+
+    <resultMap id="bankOperationTypeResultMap" type="com.solvd.bank.domain.BankOperationType" autoMapping="false">
+        <id column="bank_operation_type_id" property="bankOperationTypeId"/>
+        <result column="bank_operation_type_name" property="bankOperationTypeName"/>
+    </resultMap>
+
+</mapper>

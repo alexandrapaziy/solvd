@@ -4,6 +4,9 @@ public class AccountType {
     private Integer accountTypeId;
     private String accountTypeName;
 
+    public AccountType() {
+    }
+
     public AccountType(String accountTypeName) {
         this.accountTypeName = accountTypeName;
     }

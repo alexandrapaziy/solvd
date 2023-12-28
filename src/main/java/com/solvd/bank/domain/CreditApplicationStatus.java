@@ -4,6 +4,9 @@ public class CreditApplicationStatus {
     private Integer creditApplicationStatusId;
     private String creditApplicationStatusName;
 
+    public CreditApplicationStatus() {
+    }
+
     public CreditApplicationStatus(String creditApplicationStatusName) {
         this.creditApplicationStatusName = creditApplicationStatusName;
     }

@@ -9,6 +9,9 @@ public class BankOperation {
     private Employee employee;
     private LocalDateTime date;
 
+    public BankOperation() {
+    }
+
     public BankOperation(BankOperationType bankOperationType, Account account, Employee employee, LocalDateTime date) {
         this.bankOperationType = bankOperationType;
         this.account = account;

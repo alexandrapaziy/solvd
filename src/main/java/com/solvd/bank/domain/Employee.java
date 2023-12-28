@@ -10,6 +10,9 @@ public class Employee {
     private String employeePhone;
     private String employeeEmail;
 
+    public Employee() {
+    }
+
     public Employee(BankBranch bankBranch, Position position, String employeeName, String employeeSurname, String employeePatronymic, String employeePhone, String employeeEmail) {
         this.bankBranch = bankBranch;
         this.position = position;

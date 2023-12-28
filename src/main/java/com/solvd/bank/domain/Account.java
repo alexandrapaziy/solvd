@@ -7,6 +7,9 @@ public class Account {
     private BankBranch bankBranch;
     private double balance;
 
+    public Account() {
+    }
+
     public Account(Customer customer, AccountType accountType, BankBranch bankBranch, double balance) {
         this.customer = customer;
         this.accountType = accountType;

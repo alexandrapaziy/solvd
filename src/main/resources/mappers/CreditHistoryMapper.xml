@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.CreditHistoryRepository">
+
+    <insert id="create" keyColumn="payment_id" keyProperty="paymentId" useGeneratedKeys="true">
+        INSERT INTO credit_histories (agreement_id, amount, date) VALUES (#{creditAgreement.creditAgreementId},
+        #{amount}, #{date})
+    </insert>
+
+    <update id="update">
+        UPDATE credit_histories SET agreement_id = #{creditAgreement.creditAgreementId}, amount = #{amount}, date =
+        #{date} WHERE payment_id = #{paymentId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM credit_histories WHERE payment_id = #{paymentId}
+    </delete>
+
+    <select id="findById" resultMap="creditHistoryResultMap">
+        SELECT * FROM credit_histories WHERE payment_id = #{paymentId}
+    </select>
+
+    <select id="findAll" resultMap="creditHistoryResultMap">
+        SELECT * FROM credit_histories
+    </select>
+
+    <resultMap id="creditHistoryResultMap" type="com.solvd.bank.domain.CreditHistory" autoMapping="false">
+        <id column="payment_id" property="paymentId"/>
+        <result column="amount" property="amount"/>
+        <result column="date" property="date"/>
+
+        <association property="creditAgreement" javaType="com.solvd.bank.domain.CreditAgreement"
+                     resultMap="com.solvd.bank.persistence.CreditAgreementRepository.creditAgreementResultMap"/>
+    </resultMap>
+
+</mapper>

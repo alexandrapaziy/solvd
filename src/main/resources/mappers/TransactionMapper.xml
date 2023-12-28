@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.TransactionRepository">
+
+    <insert id="create" keyColumn="transaction_id" keyProperty="transactionId" useGeneratedKeys="true">
+        INSERT INTO transactions (account_id, transaction_type_id, amount, date) VALUES (#{account.accountId},
+        #{transactionType.transactionTypeId}, #{amount}, #{date, jdbcType=TIMESTAMP})
+    </insert>
+
+    <update id="update">
+        UPDATE transactions SET account_id = #{account.accountId}, transaction_type_id =
+        #{transactionType.transactionTypeId}, amount = #{amount}, date = #{date, jdbcType=TIMESTAMP} WHERE transaction_id = #{transactionId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM transactions WHERE transaction_id = #{transactionId}
+    </delete>
+
+    <select id="findById" resultMap="transactionResultMap">
+        SELECT * FROM transactions WHERE transaction_id = #{transactionId}
+    </select>
+
+    <select id="findAll" resultMap="transactionResultMap">
+        SELECT * FROM transactions
+    </select>
+
+    <resultMap id="transactionResultMap" type="com.solvd.bank.domain.Transaction" autoMapping="false">
+        <id column="transaction_id" property="transactionId"/>
+        <result column="amount" property="amount"/>
+        <result column="date" property="date"/>
+
+        <association property="account" javaType="com.solvd.bank.domain.Account"
+                     resultMap="com.solvd.bank.persistence.AccountRepository.accountResultMap"/>
+        <association property="transactionType" javaType="com.solvd.bank.domain.TransactionType"
+                     resultMap="com.solvd.bank.persistence.TransactionTypeRepository.transactionTypeResultMap"/>
+    </resultMap>
+
+</mapper>

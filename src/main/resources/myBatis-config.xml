@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource="config.properties"/>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mappers/AccountMapper.xml"/>
+        <mapper resource="mappers/AccountTypeMapper.xml"/>
+        <mapper resource="mappers/BankMapper.xml"/>
+        <mapper resource="mappers/BankBranchMapper.xml"/>
+        <mapper resource="mappers/BankOperationMapper.xml"/>
+        <mapper resource="mappers/BankOperationTypeMapper.xml"/>
+        <mapper resource="mappers/CreditAgreementMapper.xml"/>
+        <mapper resource="mappers/CreditAgreementStatusMapper.xml"/>
+        <mapper resource="mappers/CreditApplicationMapper.xml"/>
+        <mapper resource="mappers/CreditApplicationStatusMapper.xml"/>
+        <mapper resource="mappers/CreditHistoryMapper.xml"/>
+        <mapper resource="mappers/CustomerMapper.xml"/>
+        <mapper resource="mappers/EmployeeMapper.xml"/>
+        <mapper resource="mappers/PositionMapper.xml"/>
+        <mapper resource="mappers/TransactionMapper.xml"/>
+        <mapper resource="mappers/TransactionTypeMapper.xml"/>
+    </mappers>
+</configuration>

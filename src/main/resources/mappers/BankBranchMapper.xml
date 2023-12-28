@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.BankBranchRepository">
+
+    <insert id="create" keyColumn="bank_branch_id" keyProperty="bankBranchId" useGeneratedKeys="true">
+        INSERT INTO bank_branches (bank_id, location, phone) VALUES (#{bank.bankId}, #{bankBranchLocation},
+        #{bankBranchPhone})
+    </insert>
+
+    <update id="update">
+        UPDATE bank_branches SET bank_id = #{bank.bankId}, location = #{bankBranchLocation}, phone = #{bankBranchPhone}
+        WHERE bank_branch_id = #{bankBranchId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM bank_branches WHERE bank_branch_id = #{bankBranchId}
+    </delete>
+
+    <select id="findById" resultMap="bankBranchResultMap">
+        SELECT * FROM bank_branches WHERE bank_branch_id = #{bankBranchId}
+    </select>
+
+    <select id="findAll" resultMap="bankBranchResultMap">
+        SELECT * FROM bank_branches
+    </select>
+
+    <resultMap id="bankBranchResultMap" type="com.solvd.bank.domain.BankBranch" autoMapping="false">
+        <id column="bank_branch_id" property="bankBranchId"/>
+        <result column="location" property="bankBranchLocation"/>
+        <result column="phone" property="bankBranchPhone"/>
+
+        <association property="bank" javaType="com.solvd.bank.domain.Bank"
+                     resultMap="com.solvd.bank.persistence.BankRepository.bankResultMap"/>
+    </resultMap>
+
+</mapper>

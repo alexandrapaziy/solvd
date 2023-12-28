@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.EmployeeRepository">
+
+    <insert id="create" keyColumn="employee_id" keyProperty="employeeId" useGeneratedKeys="true">
+        INSERT INTO employees (bank_branch_id, position_id, name, surname, patronymic, phone, email) VALUES
+        (#{bankBranch.bankBranchId}, #{position.positionId}, #{employeeName}, #{employeeSurname}, #{employeePatronymic},
+        #{employeePhone}, #{employeeEmail})
+    </insert>
+
+    <update id="update">
+        UPDATE employees SET bank_branch_id = #{bankBranch.bankBranchId}, position_id = #{position.positionId}, name =
+        #{employeeName}, surname = #{employeeSurname}, patronymic = #{employeePatronymic}, phone = #{employeePhone},
+        email = #{employeeEmail} WHERE employee_id
+        = #{employeeId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM employees WHERE employee_id = #{employeeId}
+    </delete>
+
+    <select id="findById" resultMap="employeeResultMap">
+        SELECT * FROM employees WHERE employee_id = #{employeeId}
+    </select>
+
+    <select id="findAll" resultMap="employeeResultMap">
+        SELECT * FROM employees
+    </select>
+
+    <resultMap id="employeeResultMap" type="com.solvd.bank.domain.Employee" autoMapping="false">
+        <id column="employee_id" property="employeeId"/>
+        <result column="name" property="employeeName"/>
+        <result column="surname" property="employeeSurname"/>
+        <result column="patronymic" property="employeePatronymic"/>
+        <result column="phone" property="employeePhone"/>
+        <result column="email" property="employeeEmail"/>
+
+        <association property="bankBranch" javaType="com.solvd.bank.domain.BankBranch"
+                     resultMap="com.solvd.bank.persistence.BankBranchRepository.bankBranchResultMap"/>
+        <association property="position" javaType="com.solvd.bank.domain.Position"
+                     resultMap="com.solvd.bank.persistence.PositionRepository.positionResultMap"/>
+    </resultMap>
+
+</mapper>

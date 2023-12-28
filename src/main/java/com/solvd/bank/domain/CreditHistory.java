@@ -8,6 +8,9 @@ public class CreditHistory {
     private double amount;
     private LocalDateTime date;
 
+    public CreditHistory() {
+    }
+
     public CreditHistory(CreditAgreement creditAgreement, double amount, LocalDateTime date) {
         this.creditAgreement = creditAgreement;
         this.amount = amount;
