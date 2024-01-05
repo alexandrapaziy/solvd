@@ -3,6 +3,8 @@ package com.solvd.bank;
 import com.solvd.bank.domain.*;
 import com.solvd.bank.persistence.*;
 
+import com.solvd.bank.service.*;
+import com.solvd.bank.service.impl.*;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -21,92 +23,129 @@ public class ApplicationMyBatis {
 
             Bank bank = new Bank("PumbBank", "Kyiv city", "+380956738295");
             BankRepository bankRepository = session.getMapper(BankRepository.class);
-            bankRepository.create(bank);
+            BankService bankService = new BankServiceImpl(bankRepository);
+            bankService.createBank(bank);
 
             BankBranch bankBranch = new BankBranch(bank, "Kyiv city", "380956738295");
             BankBranchRepository bankBranchRepository = session.getMapper(BankBranchRepository.class);
-            bankBranchRepository.create(bankBranch);
+            BankBranchService bankBranchService = new BankBranchServiceImpl(bankBranchRepository, bankService);
+            bankBranchService.createBankBranch(bankBranch);
 
             Position position = new Position("Bank manager");
             PositionRepository positionRepository = session.getMapper(PositionRepository.class);
-            positionRepository.create(position);
+            PositionService positionService = new PositionServiceImpl(positionRepository);
+            positionService.createPosition(position);
 
             Employee employee = new Employee(bankBranch, position, "Oleksandr", "Franko",
                     "Ivanovych", "+380976352849", "oleksandrafranko@gmail.com");
             EmployeeRepository employeeRepository = session.getMapper(EmployeeRepository.class);
-            employeeRepository.create(employee);
+            EmployeeService employeeService = new EmployeeServiceImpl(employeeRepository, bankBranchService, positionService);
+            employeeService.createEmployee(employee);
 
             Customer customer = new Customer("Mykola", "Kylish", "Ivanovych",
                     "+380967483474", "mykolaivanovych@gmail.com", "Kyiv city");
             CustomerRepository customerRepository = session.getMapper(CustomerRepository.class);
-            customerRepository.create(customer);
+            CustomerService customerService = new CustomerServiceImpl(customerRepository);
+            customerService.createCustomer(customer);
 
             AccountType accountType = new AccountType("Credit card");
             AccountTypeRepository accountTypeRepository = session.getMapper(AccountTypeRepository.class);
-            accountTypeRepository.create(accountType);
+            AccountTypeService accountTypeService = new AccountTypeServiceImpl(accountTypeRepository);
+            accountTypeService.createAccountType(accountType);
 
             Account account = new Account(customer, accountType, bankBranch, 1000);
             AccountRepository accountRepository = session.getMapper(AccountRepository.class);
-            accountRepository.create(account);
+            AccountService accountService = new AccountServiceImpl(accountRepository, customerService, accountTypeService, bankBranchService);
+            accountService.createAccount(account);
 
             TransactionType transactionType = new TransactionType("Add money");
             TransactionTypeRepository transactionTypeRepository = session.getMapper(TransactionTypeRepository.class);
-            transactionTypeRepository.create(transactionType);
+            TransactionTypeService transactionTypeService = new TransactionTypeServiceImpl(transactionTypeRepository);
+            transactionTypeService.createTransactionType(transactionType);
 
             LocalDateTime localDateTime = LocalDateTime.now();
             Transaction transaction = new Transaction(account, transactionType, 500, localDateTime);
             TransactionRepository transactionRepository = session.getMapper(TransactionRepository.class);
-            transactionRepository.create(transaction);
+            TransactionService transactionService = new TransactionServiceImpl(transactionRepository, accountService,
+                    transactionTypeService);
+            transactionService.createTransaction(transaction);
 
             BankOperationType bankOperationType = new BankOperationType("Open credit");
             BankOperationTypeRepository bankOperationTypeRepository = session.getMapper(BankOperationTypeRepository.class);
-            bankOperationTypeRepository.create(bankOperationType);
+            BankOperationTypeService bankOperationTypeService = new BankOperationTypeServiceImpl(bankOperationTypeRepository);
+            bankOperationTypeService.createBankOperationType(bankOperationType);
 
             BankOperation bankOperation = new BankOperation(bankOperationType, account, employee, localDateTime);
             BankOperationRepository bankOperationRepository = session.getMapper(BankOperationRepository.class);
-            bankOperationRepository.create(bankOperation, employee);
-            bankOperationRepository.addEmployeeForBankOperation(bankOperation, employee);
+            BankOperationService bankOperationService = new BankOperationServiceImpl(bankOperationRepository,
+                    bankOperationTypeService, accountService);
+            bankOperationService.createBankOperation(bankOperation, bankOperation.getEmployee());
 
             CreditApplicationStatus creditApplicationStatus = new CreditApplicationStatus("OK");
             CreditApplicationStatusRepository creditApplicationStatusRepository = session.getMapper(CreditApplicationStatusRepository.class);
-            creditApplicationStatusRepository.create(creditApplicationStatus);
+            CreditApplicationStatusService creditApplicationStatusService = new CreditApplicationStatusServiceImpl(creditApplicationStatusRepository);
+            creditApplicationStatusService.createCreditApplicationStatus(creditApplicationStatus);
 
             LocalDate localDate = LocalDate.now();
             CreditApplication creditApplication = new CreditApplication(customer, creditApplicationStatus, localDate);
             CreditApplicationRepository creditApplicationRepository = session.getMapper(CreditApplicationRepository.class);
-            creditApplicationRepository.create(creditApplication);
+            CreditApplicationService creditApplicationService = new CreditApplicationServiceImpl(creditApplicationRepository,
+                    customerService, creditApplicationStatusService);
+            creditApplicationService.createCreditApplication(creditApplication);
 
             CreditAgreementStatus creditAgreementStatus = new CreditAgreementStatus("OK");
             CreditAgreementStatusRepository creditAgreementStatusRepository = session.getMapper(CreditAgreementStatusRepository.class);
-            creditAgreementStatusRepository.create(creditAgreementStatus);
+            CreditAgreementStatusService creditAgreementStatusService = new CreditAgreementStatusServiceImpl(creditAgreementStatusRepository);
+            creditAgreementStatusService.createCreditAgreementStatus(creditAgreementStatus);
 
             CreditAgreement creditAgreement = new CreditAgreement(creditApplication, creditAgreementStatus, 100_000, 20, 10_000);
             CreditAgreementRepository creditAgreementRepository = session.getMapper(CreditAgreementRepository.class);
-            creditAgreementRepository.create(creditAgreement);
+            CreditAgreementService creditAgreementService = new CreditAgreementServiceImpl(creditAgreementRepository,
+                    creditApplicationService, creditAgreementStatusService);
+            creditAgreementService.createCreditAgreement(creditAgreement);
 
             CreditHistory creditHistory = new CreditHistory(creditAgreement, 10_000, localDateTime);
             CreditHistoryRepository creditHistoryRepository = session.getMapper(CreditHistoryRepository.class);
-            creditHistoryRepository.create(creditHistory);
+            CreditHistoryService creditHistoryService = new CreditHistoryServiceImpl(creditHistoryRepository, creditAgreementService);
+            creditHistoryService.createCreditHistory(creditHistory);
 
             // deleting
 
-            creditHistoryRepository.deleteById(creditHistory.getPaymentId());
-            creditAgreementRepository.deleteById(creditAgreement.getCreditAgreementId());
-            creditApplicationRepository.deleteById(creditApplication.getCreditApplicationId());
-            creditAgreementStatusRepository.deleteById(creditAgreementStatus.getCreditAgreementStatusId());
-            creditApplicationStatusRepository.deleteById(creditApplicationStatus.getCreditApplicationStatusId());
+//            creditHistoryService.deleteById(creditHistory.getPaymentId());
+//            creditAgreementService.deleteById(creditAgreement.getCreditAgreementId());
+//            creditApplicationRepository.deleteById(creditApplication.getCreditApplicationId());
+//            creditAgreementStatusRepository.deleteById(creditAgreementStatus.getCreditAgreementStatusId());
+//            creditApplicationStatusRepository.deleteById(creditApplicationStatus.getCreditApplicationStatusId());
+//            bankOperationRepository.deleteById(bankOperation.getBankOperationId(), bankOperation.getEmployee().getEmployeeId());
+//            bankOperationRepository.removeEmployeeForBankOperation(bankOperation.getBankOperationId(), bankOperation.getEmployee().getEmployeeId());
+//            bankOperationTypeRepository.deleteById(bankOperationType.getBankOperationTypeId());
+//            transactionRepository.deleteById(transaction.getTransactionId());
+//            transactionTypeRepository.deleteById(transactionType.getTransactionTypeId());
+//            accountRepository.deleteById(account.getAccountId());
+//            accountTypeRepository.deleteById(accountType.getAccountTypeId());
+//            customerRepository.deleteById(customer.getCustomerId());
+//            employeeRepository.deleteById(employee.getEmployeeId());
+//            positionRepository.deleteById(position.getPositionId());
+//            bankBranchRepository.deleteById(bankBranch.getBankBranchId());
+//            bankRepository.deleteById(bank.getBankId());
+
+            creditHistoryService.deleteCreditHistory(creditHistory.getPaymentId());
+            creditAgreementService.deleteCreditAgreement(creditAgreement.getCreditAgreementId());
+            creditApplicationService.deleteCreditApplication(creditApplication.getCreditApplicationId());
+            creditAgreementStatusService.deleteCreditAgreementStatus(creditAgreementStatus.getCreditAgreementStatusId());
+            creditApplicationStatusService.deleteCreditApplicationStatus(creditApplicationStatus.getCreditApplicationStatusId());
             bankOperationRepository.deleteById(bankOperation.getBankOperationId(), bankOperation.getEmployee().getEmployeeId());
             bankOperationRepository.removeEmployeeForBankOperation(bankOperation.getBankOperationId(), bankOperation.getEmployee().getEmployeeId());
             bankOperationTypeRepository.deleteById(bankOperationType.getBankOperationTypeId());
-            transactionRepository.deleteById(transaction.getTransactionId());
-            transactionTypeRepository.deleteById(transactionType.getTransactionTypeId());
-            accountRepository.deleteById(account.getAccountId());
-            accountTypeRepository.deleteById(accountType.getAccountTypeId());
-            customerRepository.deleteById(customer.getCustomerId());
-            employeeRepository.deleteById(employee.getEmployeeId());
-            positionRepository.deleteById(position.getPositionId());
-            bankBranchRepository.deleteById(bankBranch.getBankBranchId());
-            bankRepository.deleteById(bank.getBankId());
+            transactionService.deleteTransaction(transaction.getTransactionId());
+            transactionTypeService.deleteTransactionType(transactionType.getTransactionTypeId());
+            accountService.deleteAccount(account.getAccountId());
+            accountTypeService.deleteAccountType(accountType.getAccountTypeId());
+            customerService.deleteCustomer(customer.getCustomerId());
+            employeeService.deleteEmployee(employee.getEmployeeId());
+            positionService.deletePosition(position.getPositionId());
+            bankBranchService.deleteBankBranch(bankBranch.getBankBranchId());
+            bankService.deleteBank(bank.getBankId());
 
         } catch (IOException e) {
             throw new RuntimeException(e);

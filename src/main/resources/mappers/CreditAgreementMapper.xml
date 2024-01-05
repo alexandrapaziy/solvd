@@ -36,7 +36,7 @@
         <association property="creditApplication" javaType="com.solvd.bank.domain.CreditApplication"
                      resultMap="com.solvd.bank.persistence.CreditApplicationRepository.creditApplicationResultMap"/>
         <association property="creditAgreementStatus" javaType="com.solvd.bank.domain.CreditAgreementStatus"
-                     resultMap="com.solvd.bank.persistence.CreditAgreementRepository.creditAgreementStatusResultMap"/>
+                     resultMap="com.solvd.bank.persistence.CreditAgreementStatusRepository.creditAgreementStatusResultMap"/>
     </resultMap>
 
 </mapper>
