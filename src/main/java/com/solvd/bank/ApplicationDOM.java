@@ -2,6 +2,8 @@ package com.solvd.bank;
 
 import com.solvd.bank.domain.Bank;
 import com.solvd.bank.domain.BankBranch;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -13,11 +15,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ApplicationDOM {
+
+    private static final Logger LOGGER = (Logger) LogManager.getLogger(ApplicationDOM.class);
+
     public static void main(String[] args) {
         File bankFile = new File("src/main/resources/xml/bank.xml");
         File bankBranchFile = new File("src/main/resources/xml/bankBranch.xml");
+        File transactionFile = new File("src/main/resources/xml/transaction.xml");
 
         // DOM
         try {
@@ -43,6 +51,51 @@ public class ApplicationDOM {
 
             BankBranch bankBranch = new BankBranch(bank, bankBranchLocation, bankBranchPhone);
             bankBranch.setBankBranchId(bankBranchId);
+
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document transactionDocument = builder.parse(transactionFile);
+
+            Element transactionElement = transactionDocument.getDocumentElement();
+
+            Long transactionId = Long.parseLong(getElementValue(transactionElement, "transactionId"));
+            String transactionTypeName = getElementValue(transactionElement, "transactionTypeName");
+
+            Long accountId = Long.parseLong(getElementValue(transactionElement, "accountId"));
+            String accountTypeName = getElementValue(transactionElement, "accountTypeName");
+            Double balance = Double.parseDouble(getElementValue(transactionElement, "balance"));
+
+            String customerName = getElementValue(transactionElement, "customerName");
+            String customerSurname = getElementValue(transactionElement, "customerSurname");
+            String customerPatronymic = getElementValue(transactionElement, "customerPatronymic");
+
+            String bankName = getElementValue(transactionElement, "bankName");
+            String bankLocation = getElementValue(transactionElement, "bankLocation");
+
+            Double amount = Double.parseDouble(getElementValue(transactionElement, "amount"));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+            LocalDateTime date = LocalDateTime.parse(getElementValue(transactionElement, "date"), formatter);
+
+            LOGGER.info("Transaction id: " + transactionId);
+            LOGGER.info("Transaction type: " + transactionTypeName);
+            LOGGER.info("Amount: " + amount);
+            LOGGER.info("Date: " + date + "\n");
+
+            LOGGER.info("Account id: " + accountId);
+            LOGGER.info("Account type: " + accountTypeName);
+            LOGGER.info("Account balance: " + balance + "\n");
+
+            LOGGER.info("Customer name: " + customerName);
+            LOGGER.info("Customer surname: " + customerSurname);
+            LOGGER.info("Customer patronymic: " + customerPatronymic + "\n");
+
+            LOGGER.info("Bank Name: " + bankName);
+            LOGGER.info("Bank Location: " + bankLocation + "\n");
 
         } catch (ParserConfigurationException | IOException | SAXException e) {
             throw new RuntimeException(e);

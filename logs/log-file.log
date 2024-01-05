@@ -1,0 +1,16 @@
+18:14:17.438 [main] INFO  com.solvd.bank.ApplicationDOM - Transaction id: 1
+18:14:17.441 [main] INFO  com.solvd.bank.ApplicationDOM - Transaction type: deposit
+18:14:17.442 [main] INFO  com.solvd.bank.ApplicationDOM - Amount: 1000.0
+18:14:17.442 [main] INFO  com.solvd.bank.ApplicationDOM - Date: 2023-07-03T12:30
+
+18:14:17.442 [main] INFO  com.solvd.bank.ApplicationDOM - Account id: 1
+18:14:17.443 [main] INFO  com.solvd.bank.ApplicationDOM - Account type: current
+18:14:17.443 [main] INFO  com.solvd.bank.ApplicationDOM - Account balance: 1000.0
+
+18:14:17.443 [main] INFO  com.solvd.bank.ApplicationDOM - Customer name: Mykola
+18:14:17.443 [main] INFO  com.solvd.bank.ApplicationDOM - Customer surname: Bilak
+18:14:17.443 [main] INFO  com.solvd.bank.ApplicationDOM - Customer patronymic: Oleksandrovich
+
+18:14:17.444 [main] INFO  com.solvd.bank.ApplicationDOM - Bank Name: MonoBank
+18:14:17.444 [main] INFO  com.solvd.bank.ApplicationDOM - Bank Location: Kyiv, Avtozavodska St, 54/19
+
