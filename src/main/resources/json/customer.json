@@ -1,0 +1,9 @@
+{
+  "customerId": 1,
+  "customerName": "Mykola",
+  "customerSurname": "Bilak",
+  "customerPatronymic": "Oleksandrovich",
+  "customerPhone": "+380675462847",
+  "customerEmail": "mykolabilak@gmail.com",
+  "customerAddress": "Kyiv, Street Ivan Franko, 12"
+}

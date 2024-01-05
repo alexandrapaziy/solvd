@@ -1,10 +1,21 @@
 package com.solvd.bank.domain;
 
+import jakarta.xml.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@XmlRootElement(name = "bank")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Bank {
     private Long bankId;
     private String bankName;
     private String bankLocation;
     private String bankPhone;
+
+    @XmlElementWrapper(name = "bankBranches")
+    @XmlElement(name = "bankBranch")
+    private List<BankBranch> bankBranches = new ArrayList<>();
 
     public Bank() {
     }
@@ -36,7 +47,7 @@ public class Bank {
     }
 
     public void setBankLocation(String bankLocation) {
-        bankLocation = bankLocation;
+        this.bankLocation = bankLocation;
     }
 
     public String getBankPhone() {
@@ -44,6 +55,14 @@ public class Bank {
     }
 
     public void setBankPhone(String bankPhone) {
-        bankPhone = bankPhone;
+        this.bankPhone = bankPhone;
+    }
+
+    public List<BankBranch> getBankBranches() {
+        return bankBranches;
+    }
+
+    public void setBankBranches(List<BankBranch> bankBranches) {
+        this.bankBranches = bankBranches;
     }
 }

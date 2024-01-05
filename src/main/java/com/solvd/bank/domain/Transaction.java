@@ -1,12 +1,25 @@
 package com.solvd.bank.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.solvd.bank.adapter.DateAdapter;
+import com.solvd.bank.adapter.DateDeserializerAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import java.time.LocalDateTime;
 
+@XmlRootElement(name = "transaction")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Transaction {
     private Long transactionId;
     private Account account;
     private TransactionType transactionType;
     private double amount;
+
+    @XmlJavaTypeAdapter(DateAdapter.class)
+    @JsonDeserialize(using = DateDeserializerAdapter.class)
     private LocalDateTime date;
 
     public Transaction() {

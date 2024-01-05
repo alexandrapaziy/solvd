@@ -14,3 +14,59 @@
 18:14:17.444 [main] INFO  com.solvd.bank.ApplicationDOM - Bank Name: MonoBank
 18:14:17.444 [main] INFO  com.solvd.bank.ApplicationDOM - Bank Location: Kyiv, Avtozavodska St, 54/19
 
+19:58:48.079 [main] INFO  com.solvd.bank.ApplicationJAXB - Bank Information:
+19:58:48.085 [main] INFO  com.solvd.bank.ApplicationJAXB - Bank id: 1
+19:58:48.086 [main] INFO  com.solvd.bank.ApplicationJAXB - Bank Name: MonoBank
+19:58:48.086 [main] INFO  com.solvd.bank.ApplicationJAXB - Bank Location: Kyiv, Avtozavodska St, 54/19
+19:58:48.086 [main] INFO  com.solvd.bank.ApplicationJAXB - Bank Phone: +380936178150
+19:58:48.086 [main] INFO  com.solvd.bank.ApplicationJAXB - 
+Bank Branches:
+19:58:48.087 [main] INFO  com.solvd.bank.ApplicationJAXB - Branch id: 1
+19:58:48.087 [main] INFO  com.solvd.bank.ApplicationJAXB - Branch Location: Kyiv, Avtozavodska St, 54/19
+19:58:48.088 [main] INFO  com.solvd.bank.ApplicationJAXB - Branch Phone: +380936178150
+19:58:48.088 [main] INFO  com.solvd.bank.ApplicationJAXB - -------------------------
+19:58:48.088 [main] INFO  com.solvd.bank.ApplicationJAXB - Branch id: 2
+19:58:48.088 [main] INFO  com.solvd.bank.ApplicationJAXB - Branch Location: Kyiv, Chokolivsky Boulevard, 22
+19:58:48.089 [main] INFO  com.solvd.bank.ApplicationJAXB - Branch Phone: +380934567892
+19:58:48.089 [main] INFO  com.solvd.bank.ApplicationJAXB - -------------------------
+19:58:48.138 [main] INFO  com.solvd.bank.ApplicationJAXB - Transaction id: 1
+19:58:48.139 [main] INFO  com.solvd.bank.ApplicationJAXB - Transaction type: deposit
+19:58:48.141 [main] INFO  com.solvd.bank.ApplicationJAXB - Amount: 1000.0
+19:58:48.142 [main] INFO  com.solvd.bank.ApplicationJAXB - Date: 2023-07-03T12:30
+
+19:58:48.142 [main] INFO  com.solvd.bank.ApplicationJAXB - Account id: 1
+19:58:48.143 [main] INFO  com.solvd.bank.ApplicationJAXB - Account type: current
+19:58:48.143 [main] INFO  com.solvd.bank.ApplicationJAXB - Account balance: 1000.0
+
+19:58:48.143 [main] INFO  com.solvd.bank.ApplicationJAXB - Customer name: Mykola
+19:58:48.144 [main] INFO  com.solvd.bank.ApplicationJAXB - Customer surname: Bilak
+19:58:48.144 [main] INFO  com.solvd.bank.ApplicationJAXB - Customer patronymic: Oleksandrovich
+
+19:58:54.756 [main] INFO  com.solvd.bank.ApplicationJSON - Bank Information:
+19:58:54.759 [main] INFO  com.solvd.bank.ApplicationJSON - Bank id: 1
+19:58:54.760 [main] INFO  com.solvd.bank.ApplicationJSON - Bank Name: MonoBank
+19:58:54.761 [main] INFO  com.solvd.bank.ApplicationJSON - Bank Location: Kyiv, Avtozavodska St, 54/19
+19:58:54.761 [main] INFO  com.solvd.bank.ApplicationJSON - Bank Phone: +380936178150
+19:58:54.761 [main] INFO  com.solvd.bank.ApplicationJSON - 
+Bank Branches:
+19:58:54.761 [main] INFO  com.solvd.bank.ApplicationJSON - Branch id: 1
+19:58:54.761 [main] INFO  com.solvd.bank.ApplicationJSON - Branch Location: Kyiv, Avtozavodska St, 54/19
+19:58:54.761 [main] INFO  com.solvd.bank.ApplicationJSON - Branch Phone: +380936178150
+19:58:54.761 [main] INFO  com.solvd.bank.ApplicationJSON - -------------------------
+19:58:54.761 [main] INFO  com.solvd.bank.ApplicationJSON - Branch id: 2
+19:58:54.761 [main] INFO  com.solvd.bank.ApplicationJSON - Branch Location: Kyiv, Chokolivsky Boulevard, 22
+19:58:54.761 [main] INFO  com.solvd.bank.ApplicationJSON - Branch Phone: +380934567892
+19:58:54.762 [main] INFO  com.solvd.bank.ApplicationJSON - -------------------------
+19:58:54.792 [main] INFO  com.solvd.bank.ApplicationJSON - Transaction id: 1
+19:58:54.792 [main] INFO  com.solvd.bank.ApplicationJSON - Transaction type: deposit
+19:58:54.795 [main] INFO  com.solvd.bank.ApplicationJSON - Amount: 1000.0
+19:58:54.795 [main] INFO  com.solvd.bank.ApplicationJSON - Date: 2023-07-03T12:30
+
+19:58:54.795 [main] INFO  com.solvd.bank.ApplicationJSON - Account id: 1
+19:58:54.795 [main] INFO  com.solvd.bank.ApplicationJSON - Account type: current
+19:58:54.796 [main] INFO  com.solvd.bank.ApplicationJSON - Account balance: 1000.0
+
+19:58:54.796 [main] INFO  com.solvd.bank.ApplicationJSON - Customer name: Mykola
+19:58:54.796 [main] INFO  com.solvd.bank.ApplicationJSON - Customer surname: Bilak
+19:58:54.797 [main] INFO  com.solvd.bank.ApplicationJSON - Customer patronymic: Oleksandrovich
+
