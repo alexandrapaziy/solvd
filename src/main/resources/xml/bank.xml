@@ -6,4 +6,17 @@
     <bankName>MonoBank</bankName>
     <bankLocation>Kyiv, Avtozavodska St, 54/19</bankLocation>
     <bankPhone>+380936178150</bankPhone>
+
+    <bankBranches>
+        <bankBranch>
+            <bankBranchId>1</bankBranchId>
+            <bankBranchLocation>Kyiv, Avtozavodska St, 54/19</bankBranchLocation>
+            <bankBranchPhone>+380936178150</bankBranchPhone>
+        </bankBranch>
+        <bankBranch>
+            <bankBranchId>2</bankBranchId>
+            <bankBranchLocation>Kyiv, Chokolivsky Boulevard, 22</bankBranchLocation>
+            <bankBranchPhone>+380934567892</bankBranchPhone>
+        </bankBranch>
+    </bankBranches>
 </bank>

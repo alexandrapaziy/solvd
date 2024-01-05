@@ -1,0 +1,23 @@
+{
+  "employeeId": 1,
+  "bankBranch": {
+    "bankBranchId": 1,
+    "bank": {
+      "bankId": 1,
+      "bankName": "MonoBank",
+      "bankLocation": "Kyiv, Avtozavodska St, 54/19",
+      "bankPhone": "+380936178150"
+    },
+    "bankBranchLocation": "Kyiv, Avtozavodska St, 54/19",
+    "bankBranchPhone": "+380936178150"
+  },
+  "position": {
+    "positionId": 1,
+    "positionName": "Manager"
+  },
+  "employeeName": "Ivan",
+  "employeeSurname": "Karpenko",
+  "employeePatronymic": "Stepanovich",
+  "employeePhone": "+380673459274",
+  "employeeEmail": "ivankarpenko@gmail.com"
+}

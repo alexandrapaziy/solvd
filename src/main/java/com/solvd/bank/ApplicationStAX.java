@@ -15,6 +15,7 @@ public class ApplicationStAX {
     public static void main(String[] args) {
         File customerFile = new File("src/main/resources/xml/customer.xml");
 
+        //StAX
         try (FileInputStream stream = new FileInputStream(customerFile)) {
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLEventReader reader = factory.createXMLEventReader(stream);
