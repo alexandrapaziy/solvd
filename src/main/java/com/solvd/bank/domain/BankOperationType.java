@@ -4,6 +4,9 @@ public class BankOperationType {
     private Integer bankOperationTypeId;
     private String bankOperationTypeName;
 
+    public BankOperationType() {
+    }
+
     public BankOperationType(String bankOperationTypeName) {
         this.bankOperationTypeName = bankOperationTypeName;
     }

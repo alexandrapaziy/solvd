@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.CreditApplicationRepository">
+
+    <insert id="create" keyColumn="application_id" keyProperty="creditApplicationId" useGeneratedKeys="true">
+        INSERT INTO credit_applications (customer_id, credit_application_status_id, date) VALUES
+        (#{customer.customerId}, #{creditApplicationStatus.creditApplicationStatusId}, #{date, jdbcType=TIMESTAMP})
+    </insert>
+
+    <update id="update">
+        UPDATE credit_applications SET customer_id = #{customer.customerId}, credit_application_status_id =
+        #{creditApplicationStatus.creditApplicationStatusId}, date = #{date, jdbcType=TIMESTAMP} WHERE application_id =
+        #{creditApplicationId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM credit_applications WHERE application_id = #{creditApplicationId}
+    </delete>
+
+    <select id="findById" resultMap="creditApplicationResultMap">
+        SELECT * FROM credit_applications WHERE application_id = #{creditApplicationId}
+    </select>
+
+    <select id="findAll" resultMap="creditApplicationResultMap">
+        SELECT * FROM credit_applications
+    </select>
+
+    <resultMap id="creditApplicationResultMap" type="com.solvd.bank.domain.CreditApplication" autoMapping="false">
+        <id column="application_id" property="creditApplicationId"/>
+        <result column="date" property="date"/>
+
+        <association property="customer" javaType="com.solvd.bank.domain.Customer"
+                     resultMap="com.solvd.bank.persistence.CustomerRepository.customerResultMap"/>
+        <association property="creditApplicationStatus" javaType="com.solvd.bank.domain.CreditApplicationStatus"
+                     resultMap="com.solvd.bank.persistence.CreditApplicationStatusRepository.creditApplicationStatusResultMap"/>
+    </resultMap>
+
+</mapper>

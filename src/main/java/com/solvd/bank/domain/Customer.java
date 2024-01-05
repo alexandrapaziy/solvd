@@ -9,6 +9,9 @@ public class Customer {
     private String customerEmail;
     private String customerAddress;
 
+    public Customer() {
+    }
+
     public Customer(String customerName, String customerSurname, String customerPatronymic, String customerPhone, String customerEmail, String customerAddress) {
         this.customerName = customerName;
         this.customerSurname = customerSurname;

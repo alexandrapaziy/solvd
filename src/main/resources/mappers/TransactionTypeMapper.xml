@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.TransactionTypeRepository">
+
+    <insert id="create" keyColumn="transaction_type_id" keyProperty="transactionTypeId" useGeneratedKeys="true">
+        INSERT INTO transaction_types (transaction_type_name) VALUES (#{transactionTypeName})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM transaction_types WHERE transaction_type_id = #{transactionTypeId}
+    </delete>
+
+    <select id="findById" resultMap="transactionTypeResultMap">
+        SELECT * FROM transaction_types WHERE transaction_type_id = #{transactionTypeId}
+    </select>
+
+    <resultMap id="transactionTypeResultMap" type="com.solvd.bank.domain.TransactionType" autoMapping="false">
+        <id column="transaction_type_id" property="transactionTypeId"/>
+        <result column="transaction_type_name" property="transactionTypeName"/>
+    </resultMap>
+
+</mapper>

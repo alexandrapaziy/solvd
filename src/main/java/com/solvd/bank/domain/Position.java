@@ -4,6 +4,9 @@ public class Position {
     private Integer positionId;
     private String positionName;
 
+    public Position() {
+    }
+
     public Position(String positionName) {
         this.positionName = positionName;
     }

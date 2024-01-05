@@ -8,6 +8,9 @@ public class CreditApplication {
     private CreditApplicationStatus creditApplicationStatus;
     private LocalDate date;
 
+    public CreditApplication() {
+    }
+
     public CreditApplication(Customer customer, CreditApplicationStatus creditApplicationStatus, LocalDate date) {
         this.customer = customer;
         this.creditApplicationStatus = creditApplicationStatus;

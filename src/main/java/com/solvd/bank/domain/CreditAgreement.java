@@ -8,6 +8,9 @@ public class CreditAgreement {
     private int interest;
     private double oneTimePayment;
 
+    public CreditAgreement() {
+    }
+
     public CreditAgreement(CreditApplication creditApplication, CreditAgreementStatus creditAgreementStatus, double amount, int interest, double oneTimePayment) {
         this.creditApplication = creditApplication;
         this.creditAgreementStatus = creditAgreementStatus;

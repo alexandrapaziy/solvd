@@ -4,6 +4,9 @@ public class CreditAgreementStatus {
     private Integer creditAgreementStatusId;
     private String creditAgreementStatusName;
 
+    public CreditAgreementStatus() {
+    }
+
     public CreditAgreementStatus(String creditAgreementStatusName) {
         this.creditAgreementStatusName = creditAgreementStatusName;
     }

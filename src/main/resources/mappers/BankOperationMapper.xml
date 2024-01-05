@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.BankOperationRepository">
+
+    <insert id="create" keyColumn="bank_operation_id" keyProperty="bankOperation.bankOperationId" useGeneratedKeys="true">
+        INSERT INTO bank_operations (bank_operation_type_id, account_id, date) VALUES
+        (#{bankOperation.bankOperationType.bankOperationTypeId}, #{bankOperation.account.accountId},
+        #{bankOperation.date, jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="addEmployeeForBankOperation">
+        INSERT INTO employees_has_bank_operations (employee_id, bank_operation_id) VALUES (#{employee.employeeId},
+        #{bankOperation.bankOperationId})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM employees_has_bank_operations WHERE bank_operation_id = #{bankOperationId}
+    </delete>
+
+    <delete id="removeEmployeeForBankOperation">
+        DELETE FROM bank_operations WHERE bank_operation_id = #{bankOperationId}
+    </delete>
+
+    <select id="findById" resultMap="bankOperationResultMap">
+        SELECT * FROM bank_operations WHERE bank_operation_id = #{bankOperation.bankOperationId}
+    </select>
+
+    <select id="findAll" resultMap="bankOperationResultMap">
+        SELECT * FROM bank_operations
+    </select>
+
+    <resultMap id="bankOperationResultMap" type="com.solvd.bank.domain.BankOperation" autoMapping="false">
+        <id column="bank_operation_id" property="bankOperation.bankOperationId"/>
+        <result column="date" property="date"/>
+
+        <association property="bankOperationType" javaType="com.solvd.bank.domain.BankOperationType"
+                     resultMap="com.solvd.bank.persistence.BankOperationTypeRepository.bankOperationTypeResultMap"/>
+        <association property="account" javaType="com.solvd.bank.domain.Account"
+                     resultMap="com.solvd.bank.persistence.AccountRepository.accountResultMap"/>
+    </resultMap>
+
+</mapper>

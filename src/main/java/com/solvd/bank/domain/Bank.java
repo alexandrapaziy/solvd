@@ -6,6 +6,9 @@ public class Bank {
     private String bankLocation;
     private String bankPhone;
 
+    public Bank() {
+    }
+
     public Bank(String bankName, String bankLocation, String bankPhone) {
         this.bankName = bankName;
         this.bankLocation = bankLocation;

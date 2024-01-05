@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.CreditAgreementStatusRepository">
+
+    <insert id="create" keyColumn="credit_agreement_status_id" keyProperty="creditAgreementStatusId" useGeneratedKeys="true">
+        INSERT INTO credit_agreement_statuses (credit_agreement_status_name) VALUES (#{creditAgreementStatusName})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM credit_agreement_statuses WHERE credit_agreement_status_id = #{creditAgreementStatusId}
+    </delete>
+
+    <select id="findById" resultMap="creditAgreementStatusResultMap">
+        SELECT * FROM credit_agreement_statuses WHERE credit_agreement_status_id = #{creditAgreementStatusId}
+    </select>
+
+    <resultMap id="creditAgreementStatusResultMap" type="com.solvd.bank.domain.CreditAgreementStatus" autoMapping="false">
+        <id column="credit_agreement_status_id" property="creditAgreementStatusId"/>
+        <result column="credit_agreement_status_name" property="creditAgreementStatusName"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<customer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../xsd/customer.xsd">
+    <customerId>1</customerId>
+    <customerName>Mykola</customerName>
+    <customerSurname>Bilak</customerSurname>
+    <customerPatronymic>Oleksandrovich</customerPatronymic>
+    <customerPhone>+380675462847</customerPhone>
+    <customerEmail>mykolabilak@gmail.com</customerEmail>
+    <customerAddress>Kyiv, Street Ivan Franko, 12</customerAddress>
+</customer>

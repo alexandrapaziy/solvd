@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.AccountRepository">
+
+    <insert id="create" keyColumn="account_id" keyProperty="accountId" useGeneratedKeys="true">
+        INSERT INTO accounts (customer_id, account_type_id, bank_branch_id, balance) VALUES (#{customer.customerId},
+        #{accountType.accountTypeId}, #{bankBranch.bankBranchId}, #{balance})
+    </insert>
+
+    <update id="update">
+        UPDATE accounts SET customer_id = #{customer.customerId}, account_type_id = #{accountType.accountTypeId},
+        bank_branch_id = #{bankBranch.bankBranchId}, balance = #{balance} WHERE account_id = #{accountId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM accounts WHERE account_id = #{accountId}
+    </delete>
+
+    <select id="findById" resultMap="accountResultMap">
+        SELECT * FROM accounts WHERE account_id = #{accountId}
+    </select>
+
+    <select id="findAll" resultMap="accountResultMap">
+        SELECT * FROM accounts
+    </select>
+
+    <resultMap id="accountResultMap" type="com.solvd.bank.domain.Account" autoMapping="false">
+        <id column="account_id" property="accountId"/>
+        <result column="balance" property="balance"/>
+
+        <association property="customer" javaType="com.solvd.bank.domain.Customer"
+                     resultMap="com.solvd.bank.persistence.CustomerRepository.customerResultMap"/>
+        <association property="accountType" javaType="com.solvd.bank.domain.AccountType"
+                     resultMap="com.solvd.bank.persistence.AccountTypeRepository.accountTypeResultMap"/>
+        <association property="bankBranch" javaType="com.solvd.bank.domain.BankBranch"
+                     resultMap="com.solvd.bank.persistence.BankBranchRepository.bankBranchResultMap"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.CreditApplicationStatusRepository">
+
+    <insert id="create" keyColumn="credit_application_status_id" keyProperty="creditApplicationStatusId"
+            useGeneratedKeys="true">
+        INSERT INTO credit_application_statuses (credit_application_status_name) VALUES (#{creditApplicationStatusName})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM credit_application_statuses WHERE credit_application_status_id = #{creditApplicationStatusId}
+    </delete>
+
+    <select id="findById" resultMap="creditApplicationStatusResultMap">
+        SELECT * FROM credit_application_statuses WHERE credit_application_status_id = #{creditApplicationStatusId}
+    </select>
+
+    <resultMap id="creditApplicationStatusResultMap" type="com.solvd.bank.domain.CreditApplicationStatus"
+               autoMapping="false">
+        <id column="credit_application_status_id" property="creditApplicationStatusId"/>
+        <result column="credit_application_status_name" property="creditApplicationStatusName"/>
+    </resultMap>
+
+</mapper>

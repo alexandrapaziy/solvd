@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.CreditAgreementRepository">
+
+    <insert id="create" keyColumn="agreement_id" keyProperty="creditAgreementId" useGeneratedKeys="true">
+        INSERT INTO credit_agreements (application_id, credit_agreement_status_id, amount, interest, one_time_payment)
+        VALUES (#{creditApplication.creditApplicationId}, #{creditAgreementStatus.creditAgreementStatusId}, #{amount},
+        #{interest}, #{oneTimePayment})
+    </insert>
+
+    <update id="update">
+        UPDATE credit_agreements SET application_id = #{creditApplication.creditApplicationId},
+        credit_agreement_status_id = #{creditAgreementStatus.creditAgreementStatusId}, amount = #{amount}, interest =
+        #{interest}, one_time_payment = #{oneTimePayment} WHERE agreement_id = #{creditAgreementId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM credit_agreements WHERE agreement_id = #{creditAgreementId}
+    </delete>
+
+    <select id="findById" resultMap="creditAgreementResultMap">
+        SELECT * FROM credit_agreements WHERE agreement_id = #{creditAgreementId}
+    </select>
+
+    <select id="findAll" resultMap="creditAgreementResultMap">
+        SELECT * FROM credit_agreements
+    </select>
+
+    <resultMap id="creditAgreementResultMap" type="com.solvd.bank.domain.CreditAgreement" autoMapping="false">
+        <id column="agreement_id" property="creditAgreementId"/>
+        <result column="amount" property="amount"/>
+        <result column="interest" property="interest"/>
+        <result column="one_time_payment" property="oneTimePayment"/>
+
+        <association property="creditApplication" javaType="com.solvd.bank.domain.CreditApplication"
+                     resultMap="com.solvd.bank.persistence.CreditApplicationRepository.creditApplicationResultMap"/>
+        <association property="creditAgreementStatus" javaType="com.solvd.bank.domain.CreditAgreementStatus"
+                     resultMap="com.solvd.bank.persistence.CreditAgreementStatusRepository.creditAgreementStatusResultMap"/>
+    </resultMap>
+
+</mapper>

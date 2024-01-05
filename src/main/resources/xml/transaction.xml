@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<transaction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../xsd/transaction.xsd">
+    <transactionId>1</transactionId>
+    <account>
+        <accountId>1</accountId>
+        <customer>
+            <customerId>1</customerId>
+            <customerName>Mykola</customerName>
+            <customerSurname>Bilak</customerSurname>
+            <customerPatronymic>Oleksandrovich</customerPatronymic>
+            <customerPhone>+380675462847</customerPhone>
+            <customerEmail>mykolabilak@gmail.com</customerEmail>
+            <customerAddress>Kyiv, Street Ivan Franko, 12</customerAddress>
+        </customer>
+        <accountType>
+            <accountTypeId>1</accountTypeId>
+            <accountTypeName>current</accountTypeName>
+        </accountType>
+        <bankBranch>
+            <bankBranchId>1</bankBranchId>
+            <bank>
+                <bankId>1</bankId>
+                <bankName>MonoBank</bankName>
+                <bankLocation>Kyiv, Avtozavodska St, 54/19</bankLocation>
+                <bankPhone>+380936178150</bankPhone>
+            </bank>
+            <bankBranchLocation>Kyiv, Avtozavodska St, 54/19</bankBranchLocation>
+            <bankBranchPhone>+380936178150</bankBranchPhone>
+        </bankBranch>
+        <balance>1000</balance>
+    </account>
+    <transactionType>
+        <transactionTypeId>1</transactionTypeId>
+        <transactionTypeName>deposit</transactionTypeName>
+    </transactionType>
+    <amount>1000</amount>
+    <date>2023-07-03T12:30:00</date>
+</transaction>

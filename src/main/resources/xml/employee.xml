@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<employee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../xsd/employee.xsd">
+    <employeeId>1</employeeId>
+    <bankBranch>
+        <bankBranchId>1</bankBranchId>
+        <bank>
+            <bankId>1</bankId>
+            <bankName>MonoBank</bankName>
+            <bankLocation>Kyiv, Avtozavodska St, 54/19</bankLocation>
+            <bankPhone>+380936178150</bankPhone>
+        </bank>
+        <bankBranchLocation>Kyiv, Avtozavodska St, 54/19</bankBranchLocation>
+        <bankBranchPhone>+380936178150</bankBranchPhone>
+    </bankBranch>
+    <position>
+        <positionId>1</positionId>
+        <positionName>Manager</positionName>
+    </position>
+    <employeeName>Ivan</employeeName>
+    <employeeSurname>Karpenko</employeeSurname>
+    <employeePatronymic>Stepanovich</employeePatronymic>
+    <employeePhone>+380673459274</employeePhone>
+    <employeeEmail>ivankarpenko@gmail.com</employeeEmail>
+</employee>

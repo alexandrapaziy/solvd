@@ -4,6 +4,9 @@ public class TransactionType {
     private Integer transactionTypeId;
     private String transactionTypeName;
 
+    public TransactionType() {
+    }
+
     public TransactionType(String transactionTypeName) {
         this.transactionTypeName = transactionTypeName;
     }

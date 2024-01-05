@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.bank.persistence.CustomerRepository">
+
+    <insert id="create" keyColumn="customer_id" keyProperty="customerId" useGeneratedKeys="true">
+        INSERT INTO customers (name, surname, patronymic, phone, email, address) VALUES (#{customerName},
+        #{customerSurname}, #{customerPatronymic}, #{customerPhone}, #{customerEmail}, #{customerAddress})
+    </insert>
+
+    <update id="update">
+        UPDATE customers SET name = #{customerName}, surname = #{customerSurname}, patronymic = #{customerPatronymic},
+        phone = #{customerPhone}, email = #{customerEmail}, address = #{customerAddress} WHERE customer_id =
+        #{customerId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM customers WHERE customer_id = #{customerId}
+    </delete>
+
+    <select id="findById" resultMap="customerResultMap">
+        SELECT * FROM customers WHERE customer_id = #{customerId}
+    </select>
+
+    <select id="findAll" resultMap="customerResultMap">
+        SELECT * FROM customers
+    </select>
+
+    <resultMap id="customerResultMap" type="com.solvd.bank.domain.Customer" autoMapping="false">
+        <id column="customer_id" property="customerId"/>
+        <result column="name" property="customerName"/>
+        <result column="surname" property="customerSurname"/>
+        <result column="patronymic" property="customerPatronymic"/>
+        <result column="phone" property="customerPhone"/>
+        <result column="email" property="customerEmail"/>
+        <result column="address" property="customerAddress"/>
+    </resultMap>
+
+</mapper>
