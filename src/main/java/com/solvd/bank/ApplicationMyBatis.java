@@ -111,24 +111,6 @@ public class ApplicationMyBatis {
 
             // deleting
 
-//            creditHistoryService.deleteById(creditHistory.getPaymentId());
-//            creditAgreementService.deleteById(creditAgreement.getCreditAgreementId());
-//            creditApplicationRepository.deleteById(creditApplication.getCreditApplicationId());
-//            creditAgreementStatusRepository.deleteById(creditAgreementStatus.getCreditAgreementStatusId());
-//            creditApplicationStatusRepository.deleteById(creditApplicationStatus.getCreditApplicationStatusId());
-//            bankOperationRepository.deleteById(bankOperation.getBankOperationId(), bankOperation.getEmployee().getEmployeeId());
-//            bankOperationRepository.removeEmployeeForBankOperation(bankOperation.getBankOperationId(), bankOperation.getEmployee().getEmployeeId());
-//            bankOperationTypeRepository.deleteById(bankOperationType.getBankOperationTypeId());
-//            transactionRepository.deleteById(transaction.getTransactionId());
-//            transactionTypeRepository.deleteById(transactionType.getTransactionTypeId());
-//            accountRepository.deleteById(account.getAccountId());
-//            accountTypeRepository.deleteById(accountType.getAccountTypeId());
-//            customerRepository.deleteById(customer.getCustomerId());
-//            employeeRepository.deleteById(employee.getEmployeeId());
-//            positionRepository.deleteById(position.getPositionId());
-//            bankBranchRepository.deleteById(bankBranch.getBankBranchId());
-//            bankRepository.deleteById(bank.getBankId());
-
             creditHistoryService.deleteCreditHistory(creditHistory.getPaymentId());
             creditAgreementService.deleteCreditAgreement(creditAgreement.getCreditAgreementId());
             creditApplicationService.deleteCreditApplication(creditApplication.getCreditApplicationId());
