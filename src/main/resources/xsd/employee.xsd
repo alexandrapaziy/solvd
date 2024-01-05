@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="BankType">
+        <xs:sequence>
+            <xs:element name="bankId" type="xs:long" minOccurs="1"/>
+            <xs:element name="bankName" type="xs:string"/>
+            <xs:element name="bankLocation" type="xs:string"/>
+            <xs:element name="bankPhone" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BankBranchType">
+        <xs:sequence>
+            <xs:element name="bankBranchId" type="xs:int" minOccurs="0"/>
+            <xs:element name="bank" type="BankType"/>
+            <xs:element name="bankBranchLocation" type="xs:string"/>
+            <xs:element name="bankBranchPhone" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PositionType">
+        <xs:sequence>
+            <xs:element name="positionId" type="xs:int" minOccurs="1"/>
+            <xs:element name="positionName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EmployeeType">
+        <xs:sequence>
+            <xs:element name="employeeId" type="xs:int" minOccurs="1"/>
+            <xs:element name="bankBranch" type="BankBranchType"/>
+            <xs:element name="position" type="PositionType"/>
+            <xs:element name="employeeName" type="xs:string"/>
+            <xs:element name="employeeSurname" type="xs:string"/>
+            <xs:element name="employeePatronymic" type="xs:string"/>
+            <xs:element name="employeePhone" type="xs:string"/>
+            <xs:element name="employeeEmail" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="employee" type="EmployeeType"/>
+
+</xs:schema>

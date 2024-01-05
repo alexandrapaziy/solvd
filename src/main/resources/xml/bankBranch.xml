@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<bankBranch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="../xsd/bankBranch.xsd">
+    <bankBranchId>1</bankBranchId>
+    <bank>
+        <bankId>1</bankId>
+        <bankName>MonoBank</bankName>
+        <bankLocation>Kyiv, Avtozavodska St, 54/19</bankLocation>
+        <bankPhone>+380936178150</bankPhone>
+    </bank>
+    <bankBranchLocation>Kyiv, Avtozavodska St, 54/19</bankBranchLocation>
+    <bankBranchPhone>+380936178150</bankBranchPhone>
+</bankBranch>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="BankType">
+        <xs:sequence>
+            <xs:element name="bankId" type="xs:long" minOccurs="1"/>
+            <xs:element name="bankName" type="xs:string"/>
+            <xs:element name="bankLocation" type="xs:string"/>
+            <xs:element name="bankPhone" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BankBranchType">
+        <xs:sequence>
+            <xs:element name="bankBranchId" type="xs:int" minOccurs="0"/>
+            <xs:element name="bank" type="BankType"/>
+            <xs:element name="bankBranchLocation" type="xs:string"/>
+            <xs:element name="bankBranchPhone" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CustomerType">
+        <xs:sequence>
+            <xs:element name="customerId" type="xs:long" minOccurs="1"/>
+            <xs:element name="customerName" type="xs:string"/>
+            <xs:element name="customerSurname" type="xs:string"/>
+            <xs:element name="customerPatronymic" type="xs:string"/>
+            <xs:element name="customerPhone" type="xs:string"/>
+            <xs:element name="customerEmail" type="xs:string"/>
+            <xs:element name="customerAddress" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AccountTypeType">
+        <xs:sequence>
+            <xs:element name="accountTypeId" type="xs:int"/>
+            <xs:element name="accountTypeName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AccountType">
+        <xs:sequence>
+            <xs:element name="accountId" type="xs:long" minOccurs="1"/>
+            <xs:element name="customer" type="CustomerType"/>
+            <xs:element name="accountType" type="AccountTypeType"/>
+            <xs:element name="bankBranch" type="BankBranchType"/>
+            <xs:element name="balance" type="xs:double" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="account" type="AccountType"/>
+
+</xs:schema>
