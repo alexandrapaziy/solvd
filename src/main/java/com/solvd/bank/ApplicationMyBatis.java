@@ -132,6 +132,5 @@ public class ApplicationMyBatis {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
