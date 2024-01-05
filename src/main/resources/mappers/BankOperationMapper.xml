@@ -15,11 +15,11 @@
     </insert>
 
     <delete id="deleteById">
-        DELETE FROM employees_has_bank_operations WHERE bank_operation_id = #{bankOperationId}
+        DELETE FROM bank_operations WHERE bank_operation_id = #{bankOperationId}
     </delete>
 
     <delete id="removeEmployeeForBankOperation">
-        DELETE FROM bank_operations WHERE bank_operation_id = #{bankOperationId}
+        DELETE FROM employees_has_bank_operations WHERE bank_operation_id = #{bankOperationId}
     </delete>
 
     <select id="findById" resultMap="bankOperationResultMap">
