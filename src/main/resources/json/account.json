@@ -1,0 +1,28 @@
+{
+  "accountId": 1,
+  "customer": {
+    "customerId": 1,
+    "customerName": "Mykola",
+    "customerSurname": "Bilak",
+    "customerPatronymic": "Oleksandrovich",
+    "customerPhone": "+380675462847",
+    "customerEmail": "mykolabilak@gmail.com",
+    "customerAddress": "Kyiv, Street Ivan Franko, 12"
+  },
+  "accountType": {
+    "accountTypeId": 1,
+    "accountTypeName": "current"
+  },
+  "bankBranch": {
+    "bankBranchId": 1,
+    "bank": {
+      "bankId": 1,
+      "bankName": "MonoBank",
+      "bankLocation": "Kyiv, Avtozavodska St, 54/19",
+      "bankPhone": "+380936178150"
+    },
+    "bankBranchLocation": "Kyiv, Avtozavodska St, 54/19",
+    "bankBranchPhone": "+380936178150"
+  },
+  "balance": 1000
+}

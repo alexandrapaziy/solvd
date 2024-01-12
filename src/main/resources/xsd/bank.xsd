@@ -2,12 +2,27 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+    <xs:complexType name="BankBranchType">
+        <xs:sequence>
+            <xs:element name="bankBranchId" type="xs:int" minOccurs="0"/>
+            <xs:element name="bankBranchLocation" type="xs:string"/>
+            <xs:element name="bankBranchPhone" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BankBranchesType">
+        <xs:sequence>
+            <xs:element name="bankBranch" type="BankBranchType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="BankType">
         <xs:sequence>
             <xs:element name="bankId" type="xs:long" minOccurs="1"/>
             <xs:element name="bankName" type="xs:string"/>
             <xs:element name="bankLocation" type="xs:string"/>
             <xs:element name="bankPhone" type="xs:string"/>
+            <xs:element name="bankBranches" type="BankBranchesType"/>
         </xs:sequence>
     </xs:complexType>
 
