@@ -70,3 +70,9 @@ Bank Branches:
 19:58:54.796 [main] INFO  com.solvd.bank.ApplicationJSON - Customer surname: Bilak
 19:58:54.797 [main] INFO  com.solvd.bank.ApplicationJSON - Customer patronymic: Oleksandrovich
 
+22:50:46.076 [main] INFO  com.solvd.bank.pattern.listener.Customer - Customer Anna, Bank name have changed to MonoBank
+22:50:46.080 [main] INFO  com.solvd.bank.pattern.listener.Customer - Customer Mike, Bank name have changed to MonoBank
+22:50:46.080 [main] INFO  com.solvd.bank.pattern.listener.Customer - Customer Anna, Bank name have changed to PrivatBank
+00:31:40.725 [main] INFO  com.solvd.bank.pattern.decorator.RegularBankService - Regular bank service was provided
+00:31:40.730 [main] INFO  com.solvd.bank.pattern.decorator.CreditBankServiceDecorator - Credit consultation was added
+00:31:40.730 [main] INFO  com.solvd.bank.pattern.decorator.InsuranceBankServiceDecorator - Insurance consultation was added
